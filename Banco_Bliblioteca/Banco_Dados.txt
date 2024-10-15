@@ -1,0 +1,82 @@
+create table Livros(
+Cod_Livros int PRIMARY key,
+  Nome_Livro Varchar (100),
+  Nome_Autor Varchar (100),
+  Nome_Editora Varchar (100),
+  Livro_Genero Varchar (100),
+  Livro_Classi Varchar (2),
+  Qa_Pagina Int (3),
+  Parecidos Varchar (100),
+  ISBN varchar (18)
+);
+
+
+insert into Livros (Cod_Livros, nome_livro,          nome_autor,     nome_editora,     livro_genero, livro_classi, qa_pagina, parecidos, isbn) 
+values			   
+(1,         "Um diario De gatos", "luncial",        "CasaKolo",      "Horror",     "18",         150,     "UMA NOITE CIDADE",   "123-4-12-123678-0"  ),
+
+(2, "A Jornada das Sombras", "Ana Silva", "Editora Nova", "Fantasia", "12", 320, "O Senhor dos Anéis", "978-3-16-148410-0"),
+
+(3, "O Mistério da Floresta", "Carlos Mendes", "Livros do Vale", "Suspense", "16", 280, "O Código Da Vinci", "978-0-7432-7356-5"),
+
+(4, "Coração Rebelde", "Mariana Costa", "Editora Primavera", "Romance", "14", 220, "Orgulho e Preconceito", "978-1-56619-909-4"),
+
+(5, "Entre as Estrelas", "Felipe Rocha", "Galáxia Press", "Sci-Fi", "10", 350, "Duna", "978-0-307-27752-5"),
+
+(6, "O Enigma da Espada", "Tatiane Borges", "Editora Futuro", "Aventura", "12", 290, "As Crônicas de Nárnia", "978-0-316-07441-4");
+
+
+
+
+create table Usuarios (
+  Cod_usuario int PRIMARY key,
+  Nome_usuario Varchar (100),
+  CPF Varchar (14),
+  Livro_Pego Varchar (100),
+  Livro_Compra CHARACTER(1),
+  Telefone Varchar (9),
+  Email Varchar (150)
+);
+
+insert into Usuarios (Cod_usuario, Nome_usuario, CPF, Livro_Pego, Livro_Compra, Telefone, Email) 
+values
+(1, 'João Silva', '123.456.789-00', 'Um Diário de Gatos', 'S', '987654321', 'joao.silva@email.com'),
+
+(2, 'Maria Oliveira', '234.567.890-11', 'A Jornada das Sombras', 'N', '912345678', 'maria.oliveira@email.com'),
+
+(3, 'Pedro Santos', '345.678.901-22', 'O Mistério da Floresta', 'S', '934567890', 'pedro.santos@email.com'),
+
+(4, 'Ana Souza', '456.789.012-33', 'Coração Rebelde', 'N', '945678901', 'ana.souza@email.com'),
+
+(5, 'Lucas Pereira', '567.890.123-44', 'Entre as Estrelas', 'S', '956789012', 'lucas.pereira@email.com');
+
+
+
+
+CREATE TABLE Funcionarios (
+    Cod_Funci INT PRIMARY KEY,
+    Nome_Funcio VARCHAR(150),
+    Funcao_Funcio VARCHAR(150),
+    Endereco_Casa VARCHAR(100),
+    Endereco_Numero INT,
+    Complemento VARCHAR(10),
+    Cep VARCHAR(9),
+    Email VARCHAR(150),
+  
+    cod_usuario INT,  -- Adiciona a coluna para a chave estrangeira
+    CONSTRAINT fk_Usuarios FOREIGN KEY (cod_usuario) REFERENCES Usuarios(cod_usuario)
+);
+
+
+insert into Funcionarios (Cod_Funci, Nome_Funcio, Funcao_Funcio, Endereco_Casa, Endereco_Numero, Complemento, Cep, Email, cod_usuario) 
+values
+(1, 'Carlos Almeida', 'Gerente', 'Rua das Flores', 123, 'Apt 45', '12345-678', 'carlos.almeida@email.com', 1),
+
+(2, 'Fernanda Lima', 'Bibliotecária', 'Avenida Central', 456, '', '23456-789', 'fernanda.lima@email.com', 2),
+
+(3, 'Roberto Silva', 'Assistente', 'Praça da Liberdade', 789, 'Sala 301', '34567-890', 'roberto.silva@email.com', 3),
+
+(4, 'Juliana Costa', 'Coordenadora', 'Rua das Acácias', 101, 'Bloco B', '45678-901', 'juliana.costa@email.com', 4),
+
+(5, 'Eduardo Santos', 'Atendente', 'Avenida Brasil', 202, 'Casa 2', '56789-012', 'eduardo.santos@email.com', 5);
+
